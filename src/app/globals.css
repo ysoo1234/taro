@@ -1,26 +1,240 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f1e8;
+  --foreground: #1d2433;
+  --cream: #fffaf1;
+  --sand: #efe5d3;
+  --gold: #d7b26d;
+  --gold-strong: #b88a3b;
+  --navy: #1d2433;
+  --navy-soft: #31415e;
+  --emerald: #2d7864;
+  --emerald-soft: #dff3ea;
+  --rose: #f6d7d4;
+  --paper: rgba(255, 251, 244, 0.94);
+  --line: rgba(41, 54, 78, 0.12);
+  --shadow: 0 24px 70px rgba(33, 43, 60, 0.12);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans:
+    "Pretendard Variable", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo",
+    "Malgun Gothic", sans-serif;
+  --font-display: "Maplestory", "Pretendard Variable", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+@font-face {
+  font-family: "Maplestory";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
+    format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+
+html {
+  background:
+    radial-gradient(circle at top, rgba(255, 246, 221, 0.95), transparent 28%),
+    radial-gradient(circle at 18% 18%, rgba(255, 221, 166, 0.22), transparent 18%),
+    radial-gradient(circle at 82% 14%, rgba(111, 157, 142, 0.2), transparent 18%),
+    linear-gradient(180deg, #f8f2e8 0%, #efe7d7 100%);
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(255, 232, 198, 0.55) 0 1px, transparent 1.2px);
+  background-position:
+    0 0,
+    22px 28px;
+  background-size:
+    48px 48px,
+    72px 72px;
+  opacity: 0.5;
+}
+
+.byeoldam-page {
+  position: relative;
+  min-height: 100vh;
+}
+
+.byeoldam-shell {
+  width: min(100% - 24px, 1180px);
+  margin-inline: auto;
+}
+
+.byeoldam-panel {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.byeoldam-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+.byeoldam-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(184, 138, 59, 0.18);
+  background: rgba(255, 250, 241, 0.88);
+  padding: 0.55rem 0.9rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy-soft);
+}
+
+.byeoldam-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.92rem 1.35rem;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.byeoldam-button:hover {
+  transform: translateY(-1px);
+}
+
+.byeoldam-button-primary {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a3450 100%);
+  color: #fffdf9;
+  box-shadow: 0 16px 28px rgba(29, 36, 51, 0.16);
+}
+
+.byeoldam-button-secondary {
+  border: 1px solid rgba(49, 65, 94, 0.14);
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--navy);
+}
+
+.byeoldam-field {
+  width: 100%;
+  border-radius: 24px;
+  border: 1px solid rgba(49, 65, 94, 0.12);
+  background: rgba(255, 255, 255, 0.86);
+  padding: 1rem 1.1rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--navy);
+  outline: none;
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
+}
+
+.byeoldam-field:focus {
+  border-color: rgba(45, 120, 100, 0.5);
+  box-shadow: 0 0 0 4px rgba(45, 120, 100, 0.12);
+}
+
+.byeoldam-label {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--navy-soft);
+}
+
+.byeoldam-card-slot {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(215, 178, 109, 0.24);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.76), transparent 48%),
+    linear-gradient(180deg, rgba(255, 248, 236, 0.98) 0%, rgba(247, 238, 224, 0.98) 100%);
+  box-shadow: 0 18px 34px rgba(93, 77, 42, 0.08);
+}
+
+.byeoldam-card-slot::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border-radius: 18px;
+  border: 1px dashed rgba(184, 138, 59, 0.32);
+  pointer-events: none;
+}
+
+.byeoldam-reading-section {
+  border-radius: 28px;
+  border: 1px solid rgba(49, 65, 94, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+  padding: 1.25rem;
+}
+
+.byeoldam-print-sheet {
+  width: min(100%, 920px);
+  margin-inline: auto;
+}
+
+@media print {
+  html,
+  body {
+    background: white;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .byeoldam-panel,
+  .byeoldam-reading-section,
+  .byeoldam-card-slot {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    background: white !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .byeoldam-shell {
+    width: min(100% - 18px, 1180px);
+  }
 }
