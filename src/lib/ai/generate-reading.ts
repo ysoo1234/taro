@@ -30,12 +30,39 @@ export type TarotReadingResult = z.infer<typeof readingSchema>;
 
 let openaiClient: OpenAI | null = null;
 
-function getOpenAI() {
-  requireEnv("OPENAI_API_KEY");
+function getSingleLineEnvValue(
+  key: "OPENAI_API_KEY" | "OPENAI_MODEL",
+  value: string | undefined,
+) {
+  const normalized = value?.trim();
 
+  if (!normalized) {
+    if (key === "OPENAI_API_KEY") {
+      requireEnv("OPENAI_API_KEY");
+    }
+
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+
+  if (/[\r\n]/.test(normalized)) {
+    throw new Error(
+      `${key} contains a line break. Keep each variable on its own line in .env.local and restart the dev server.`,
+    );
+  }
+
+  if (key === "OPENAI_API_KEY" && /\bOPENAI_MODEL=/.test(normalized)) {
+    throw new Error(
+      "OPENAI_API_KEY appears to include OPENAI_MODEL. Put each variable on its own .env.local line and restart the dev server.",
+    );
+  }
+
+  return normalized;
+}
+
+function getOpenAI() {
   if (!openaiClient) {
     openaiClient = new OpenAI({
-      apiKey: env.OPENAI_API_KEY,
+      apiKey: getSingleLineEnvValue("OPENAI_API_KEY", env.OPENAI_API_KEY),
     });
   }
 
@@ -73,8 +100,9 @@ function buildPrompt(input: CreateReadingInput) {
 export async function generateReading(
   input: CreateReadingInput,
 ): Promise<{ model: string; result: TarotReadingResult }> {
+  const model = getSingleLineEnvValue("OPENAI_MODEL", env.OPENAI_MODEL);
   const response = await getOpenAI().responses.parse({
-    model: env.OPENAI_MODEL,
+    model,
     input: [
       {
         role: "system",
@@ -111,7 +139,7 @@ export async function generateReading(
   );
 
   return {
-    model: env.OPENAI_MODEL,
+    model,
     result: {
       ...parsed,
       cardInsights: input.cards.map((card) => {
