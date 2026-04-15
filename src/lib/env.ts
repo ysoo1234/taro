@@ -2,18 +2,38 @@ import "server-only";
 
 import { z } from "zod";
 
+import { normalizeDatabaseUrl } from "@/lib/normalize-database-url";
+
+function emptyToUndefined(value: unknown) {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  const trimmed = value.trim();
+  return trimmed.length === 0 ? undefined : trimmed;
+}
+
 const envSchema = z.object({
-  DATABASE_URL: z.string().url().optional(),
-  OPENAI_API_KEY: z.string().min(1).optional(),
-  OPENAI_MODEL: z.string().min(1).default("gpt-5.4-mini"),
-  NEXT_PUBLIC_APP_URL: z.string().url().optional(),
+  DATABASE_URL: z.preprocess(emptyToUndefined, z.string().url().optional()),
+  OPENAI_API_KEY: z.preprocess(
+    emptyToUndefined,
+    z.string().min(1).optional(),
+  ),
+  OPENAI_MODEL: z.preprocess(
+    emptyToUndefined,
+    z.string().min(1).default("gpt-5.4-mini"),
+  ),
+  NEXT_PUBLIC_APP_URL: z.preprocess(
+    emptyToUndefined,
+    z.string().url().optional(),
+  ),
   NODE_ENV: z
     .enum(["development", "test", "production"])
     .default("development"),
 });
 
 const parsedEnv = envSchema.parse({
-  DATABASE_URL: process.env.DATABASE_URL,
+  DATABASE_URL: normalizeDatabaseUrl(process.env.DATABASE_URL ?? ""),
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   OPENAI_MODEL: process.env.OPENAI_MODEL,
   NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,

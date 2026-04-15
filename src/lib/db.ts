@@ -3,6 +3,7 @@ import "server-only";
 import { Pool, type QueryResult, type QueryResultRow } from "pg";
 
 import { env, requireEnv } from "@/lib/env";
+import { normalizeDatabaseUrl } from "@/lib/normalize-database-url";
 
 const globalForDb = globalThis as typeof globalThis & {
   __byeoldamPool?: Pool;
@@ -10,10 +11,11 @@ const globalForDb = globalThis as typeof globalThis & {
 
 function getPool() {
   requireEnv("DATABASE_URL");
+  const connectionString = env.DATABASE_URL!;
 
   if (!globalForDb.__byeoldamPool) {
     globalForDb.__byeoldamPool = new Pool({
-      connectionString: env.DATABASE_URL,
+      connectionString: normalizeDatabaseUrl(connectionString),
       max: 10,
     });
   }
