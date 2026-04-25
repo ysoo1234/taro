@@ -106,7 +106,7 @@ export default function Home() {
           <details className="byeoldam-flow-details">
             <summary>
               <span className="byeoldam-pill">운영 흐름</span>
-              <strong>클릭해서 확인하기</strong>
+              <span className="flow-arrow" aria-hidden="true" />
             </summary>
 
             <div className="mt-6 grid gap-4 md:grid-cols-5">

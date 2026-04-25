@@ -262,7 +262,34 @@ a {
 
 .byeoldam-flow-details summary strong {
   color: var(--ink);
-  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.flow-arrow {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 92, 205, 0.2);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 12px 24px rgba(63, 43, 112, 0.12);
+}
+
+.flow-arrow::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-right: 3px solid var(--violet);
+  border-bottom: 3px solid var(--violet);
+  transform: translate(-50%, -58%) rotate(45deg);
+}
+
+.byeoldam-flow-details[open] .flow-arrow::before {
+  transform: translate(-50%, -28%) rotate(225deg);
 }
 
 .studio-panel {
