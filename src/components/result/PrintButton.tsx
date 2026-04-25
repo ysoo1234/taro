@@ -7,7 +7,7 @@ export function PrintButton() {
       onClick={() => window.print()}
       className="byeoldam-button byeoldam-button-primary"
     >
-      QR 인쇄하기
+      QR 코드 인쇄
     </button>
   );
 }

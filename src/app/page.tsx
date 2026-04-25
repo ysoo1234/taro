@@ -1,28 +1,43 @@
 import Link from "next/link";
 
 const flowSteps = [
-  "현장에서 카드 3장과 고민 입력",
-  "GPT가 해석 생성",
-  "Neon DB 저장",
-  "QR 영수증 인쇄",
-  "나중에 QR 재조회",
+  {
+    title: "카드 3장 촬영",
+    description: "손님이 뽑은 카드를 과거, 현재, 미래 순서대로 올립니다.",
+  },
+  {
+    title: "고민 입력",
+    description: "손님이 지금 묻고 싶은 내용을 짧고 자연스럽게 적습니다.",
+  },
+  {
+    title: "카드 인식",
+    description: "사진에서 카드 이름과 놓인 방향을 읽고 해석에 반영합니다.",
+  },
+  {
+    title: "결과 생성",
+    description: "고민과 카드 흐름을 바탕으로 손님용 결과를 만듭니다.",
+  },
+  {
+    title: "QR 인쇄",
+    description: "미니 프린터용 QR 영수증을 뽑아 손님에게 전달합니다.",
+  },
 ];
 
 const valueCards = [
   {
     title: "운영은 빠르게",
     description:
-      "태블릿 하나로 카드와 고민만 넣으면 결과, 링크, QR까지 한 번에 생성됩니다.",
+      "카드 사진과 고민을 한 번에 입력하고 결과와 QR 인쇄까지 바로 이어집니다.",
   },
   {
-    title: "기록은 안전하게",
+    title: "카드는 사진으로",
     description:
-      "손님이 다시 QR을 찍어도 처음 생성된 결과를 그대로 확인하므로 비용과 결과 일관성을 함께 잡습니다.",
+      "카드 종류가 달라도 촬영한 이미지를 기준으로 카드명을 읽고 해석에 반영합니다.",
   },
   {
-    title: "디자인은 별담답게",
+    title: "결과는 쉽게",
     description:
-      "송운노트의 안정적인 서버 패턴과 너도나도의 감성적인 카드 UI 결을 섞어 별담용으로 재해석했습니다.",
+      "손님이 바로 이해할 수 있도록 어려운 표현보다 쉬운 말로 정리합니다.",
   },
 ];
 
@@ -30,34 +45,26 @@ export default function Home() {
   return (
     <main className="byeoldam-page px-3 py-4 sm:px-4 sm:py-6">
       <div className="byeoldam-shell grid gap-6">
-        <section className="byeoldam-panel overflow-hidden rounded-[40px] px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-          <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+        <section className="byeoldam-hero overflow-hidden rounded-[36px] px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+          <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
             <div>
               <div className="byeoldam-pill">AI 타로카페 별담 MVP</div>
-              <h1 className="byeoldam-title mt-5 text-[3rem] leading-[0.94] text-[var(--navy)] sm:text-[4.5rem] lg:text-[5.3rem]">
+              <h1 className="byeoldam-title mt-5 text-[3rem] leading-[0.95] text-[var(--ink)] sm:text-[4.5rem] lg:text-[5.3rem]">
                 별을 담은
                 <br />
                 QR 타로 리딩
               </h1>
-              <p className="mt-6 max-w-[640px] text-[1.05rem] leading-8 text-[var(--navy-soft)] sm:text-[1.15rem]">
-                현실에서 손님이 직접 카드 3장을 뽑고, 운영자는 고민과 함께
-                입력합니다. 해석은 OpenAI로 생성하고 결과는 Neon DB에 저장한 뒤
-                QR로 인쇄합니다. 손님은 언제든 다시 스캔해 본인 결과를 확인할 수
-                있습니다.
+              <p className="mt-6 max-w-[640px] text-[1.05rem] leading-8 text-[var(--ink-soft)] sm:text-[1.15rem]">
+                손님이 고른 카드 사진 3장과 고민을 입력하면 카드 해석과 QR 영수증이 한 번에
+                만들어집니다.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/studio"
-                  className="byeoldam-button byeoldam-button-primary min-w-[190px]"
+                  className="byeoldam-button byeoldam-button-primary min-w-[170px]"
                 >
-                  바로 운영 시작하기
+                  운영 시작하기
                 </Link>
-                <a
-                  href="#flow"
-                  className="byeoldam-button byeoldam-button-secondary min-w-[170px]"
-                >
-                  흐름 보기
-                </a>
               </div>
             </div>
 
@@ -76,13 +83,13 @@ export default function Home() {
                   }}
                 >
                   <div className="relative z-10">
-                    <p className="text-sm font-black uppercase tracking-[0.24em] text-[var(--gold-strong)]">
+                    <p className="text-sm font-black uppercase text-[var(--lilac-strong)]">
                       point 0{index + 1}
                     </p>
-                    <h2 className="mt-3 text-[1.45rem] font-black tracking-[-0.03em] text-[var(--navy)]">
+                    <h2 className="mt-3 text-[1.45rem] font-black text-[var(--ink)]">
                       {card.title}
                     </h2>
-                    <p className="mt-3 text-[1rem] leading-7 text-[var(--navy-soft)]">
+                    <p className="mt-3 text-[1rem] leading-7 text-[var(--ink-soft)]">
                       {card.description}
                     </p>
                   </div>
@@ -94,31 +101,30 @@ export default function Home() {
 
         <section
           id="flow"
-          className="byeoldam-panel rounded-[40px] px-5 py-7 sm:px-8 sm:py-8"
+          className="byeoldam-panel rounded-[32px] px-5 py-6 sm:px-8 sm:py-7"
         >
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <div className="byeoldam-pill">운영 흐름</div>
-              <h2 className="mt-4 text-[2rem] font-black tracking-[-0.04em] text-[var(--navy)]">
-                계획서 요구사항을 그대로 살린 동선
-              </h2>
-            </div>
-            <p className="max-w-[420px] text-[0.98rem] leading-7 text-[var(--navy-soft)]">
-              Firebase와 Gemini는 기능 예시일 뿐입니다. 지금 구조는 Vercel 배포와
-              Next.js 운영에 맞춰 OpenAI, Neon, QR 조합으로 단순화했습니다.
-            </p>
-          </div>
+          <details className="byeoldam-flow-details">
+            <summary>
+              <span className="byeoldam-pill">운영 흐름</span>
+              <strong>클릭해서 확인하기</strong>
+            </summary>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-5">
-            {flowSteps.map((step, index) => (
-              <div key={step} className="byeoldam-reading-section">
-                <p className="text-sm font-black uppercase tracking-[0.24em] text-[var(--gold-strong)]">
-                  step {index + 1}
-                </p>
-                <p className="mt-3 text-[1rem] leading-7 text-[var(--navy)]">{step}</p>
-              </div>
-            ))}
-          </div>
+            <div className="mt-6 grid gap-4 md:grid-cols-5">
+              {flowSteps.map((step, index) => (
+                <div key={step.title} className="byeoldam-reading-section">
+                  <p className="text-sm font-black uppercase text-[var(--lilac-strong)]">
+                    step {index + 1}
+                  </p>
+                  <h2 className="mt-3 text-[1rem] font-black text-[var(--ink)]">
+                    {step.title}
+                  </h2>
+                  <p className="mt-2 text-[0.95rem] leading-6 text-[var(--ink-soft)]">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </details>
         </section>
       </div>
     </main>

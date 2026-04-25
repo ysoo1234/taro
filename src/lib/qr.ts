@@ -8,8 +8,8 @@ export async function createQrDataUrl(value: string) {
     margin: 1,
     width: 320,
     color: {
-      dark: "#1d2433",
-      light: "#FFF9F0",
+      dark: "#161616",
+      light: "#ffffff",
     },
   });
 }

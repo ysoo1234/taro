@@ -1,7 +1,7 @@
 import "server-only";
 
 import type { TarotReadingResult } from "@/lib/ai/generate-reading";
-import { generateReading } from "@/lib/ai/generate-reading";
+import { generateReading, identifyCardsFromPhotos } from "@/lib/ai/generate-reading";
 import { query } from "@/lib/db";
 import {
   createPublicToken,
@@ -44,7 +44,8 @@ function normalizeReading(row: ReadingRow): StoredReading {
 export async function createReading(input: CreateReadingInput) {
   const sanitized = sanitizeCreateReadingInput(input);
   const token = createPublicToken();
-  const { model, result } = await generateReading(sanitized);
+  const identified = await identifyCardsFromPhotos(sanitized);
+  const { model, result } = await generateReading(identified);
 
   const inserted = await query<ReadingRow>(
     `
@@ -58,7 +59,7 @@ export async function createReading(input: CreateReadingInput) {
       values ($1, $2, $3::jsonb, $4::jsonb, $5)
       returning id, public_token, concern, cards_json, result_json, model, created_at
     `,
-    [token, sanitized.concern, JSON.stringify(sanitized.cards), JSON.stringify(result), model],
+    [token, identified.concern, JSON.stringify(identified.cards), JSON.stringify(result), model],
   );
 
   return normalizeReading(inserted.rows[0]);

@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f1e8;
-  --foreground: #1d2433;
-  --cream: #fffaf1;
-  --sand: #efe5d3;
-  --gold: #d7b26d;
-  --gold-strong: #b88a3b;
-  --navy: #1d2433;
-  --navy-soft: #31415e;
-  --emerald: #2d7864;
-  --emerald-soft: #dff3ea;
-  --rose: #f6d7d4;
-  --paper: rgba(255, 251, 244, 0.94);
-  --line: rgba(41, 54, 78, 0.12);
-  --shadow: 0 24px 70px rgba(33, 43, 60, 0.12);
+  --background: #130f24;
+  --foreground: #20172f;
+  --paper: rgba(255, 255, 255, 0.88);
+  --ink: #1d1730;
+  --ink-soft: #51466b;
+  --violet: #6f4cc3;
+  --violet-deep: #2b1b55;
+  --lilac: #d8c7ff;
+  --lilac-strong: #7c5ccd;
+  --rose: #ffb2ce;
+  --rose-strong: #bd4777;
+  --teal: #228f8a;
+  --gold: #c9a76a;
+  --line: rgba(91, 72, 132, 0.18);
+  --shadow: 0 24px 70px rgba(20, 10, 48, 0.24);
 }
 
 @theme inline {
@@ -27,14 +28,51 @@
   --font-mono: "JetBrains Mono", "SFMono-Regular", monospace;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+@font-face {
+  font-family: "Maplestory";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
+    format("woff");
+  font-weight: 700;
+  font-display: swap;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(160deg, #100d20 0%, #25164a 42%, #43307a 70%, #17122b 100%);
+  background-size:
+    74px 74px,
+    74px 74px,
+    auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.92) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(216, 199, 255, 0.72) 0 1px, transparent 1.1px);
+  background-position:
+    0 0,
+    28px 34px;
+  background-size:
+    58px 58px,
+    92px 92px;
+  opacity: 0.56;
 }
 
 button,
@@ -48,40 +86,6 @@ a {
   color: inherit;
 }
 
-@font-face {
-  font-family: "Maplestory";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
-    format("woff");
-  font-weight: 700;
-  font-display: swap;
-}
-
-html {
-  background:
-    radial-gradient(circle at top, rgba(255, 246, 221, 0.95), transparent 28%),
-    radial-gradient(circle at 18% 18%, rgba(255, 221, 166, 0.22), transparent 18%),
-    radial-gradient(circle at 82% 14%, rgba(111, 157, 142, 0.2), transparent 18%),
-    linear-gradient(180deg, #f8f2e8 0%, #efe7d7 100%);
-  scroll-behavior: smooth;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.2px),
-    radial-gradient(circle, rgba(255, 232, 198, 0.55) 0 1px, transparent 1.2px);
-  background-position:
-    0 0,
-    22px 28px;
-  background-size:
-    48px 48px,
-    72px 72px;
-  opacity: 0.5;
-}
-
 .byeoldam-page {
   position: relative;
   min-height: 100vh;
@@ -92,16 +96,42 @@ body::before {
   margin-inline: auto;
 }
 
-.byeoldam-panel {
+.byeoldam-panel,
+.byeoldam-hero {
   border: 1px solid var(--line);
-  background: var(--paper);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 240, 255, 0.84)),
+    var(--paper);
   backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
 }
 
+.byeoldam-hero {
+  position: relative;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.76) 0%, rgba(235, 224, 255, 0.7) 46%, rgba(73, 53, 132, 0.26) 100%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(214, 198, 255, 0.72));
+}
+
+.byeoldam-hero::after {
+  content: "";
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: 1.25rem;
+  width: min(28vw, 230px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  opacity: 0.38;
+  background:
+    radial-gradient(circle at 22% 24%, #ffffff 0 2px, transparent 2.4px),
+    radial-gradient(circle at 62% 32%, #ffffff 0 1.5px, transparent 2px),
+    radial-gradient(circle at 78% 66%, #ffffff 0 2px, transparent 2.4px),
+    linear-gradient(135deg, transparent 46%, rgba(70, 48, 132, 0.45) 47% 49%, transparent 50%);
+}
+
 .byeoldam-title {
   font-family: var(--font-display);
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .byeoldam-pill {
@@ -109,132 +139,480 @@ body::before {
   align-items: center;
   gap: 0.5rem;
   border-radius: 9999px;
-  border: 1px solid rgba(184, 138, 59, 0.18);
-  background: rgba(255, 250, 241, 0.88);
+  border: 1px solid rgba(124, 92, 205, 0.22);
+  background: rgba(255, 255, 255, 0.74);
   padding: 0.55rem 0.9rem;
   font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--navy-soft);
+  font-weight: 800;
+  color: var(--ink-soft);
 }
 
 .byeoldam-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 0;
   border-radius: 9999px;
   padding: 0.92rem 1.35rem;
   font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  letter-spacing: 0;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
     background-color 180ms ease,
-    color 180ms ease;
+    color 180ms ease,
+    opacity 180ms ease;
 }
 
 .byeoldam-button:hover {
   transform: translateY(-1px);
 }
 
-.byeoldam-button-primary {
-  background: linear-gradient(135deg, var(--navy) 0%, #2a3450 100%);
-  color: #fffdf9;
-  box-shadow: 0 16px 28px rgba(29, 36, 51, 0.16);
+.byeoldam-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.46;
+  transform: none;
 }
 
-.byeoldam-button-secondary {
-  border: 1px solid rgba(49, 65, 94, 0.14);
-  background: rgba(255, 255, 255, 0.68);
-  color: var(--navy);
+.byeoldam-button-primary {
+  background: linear-gradient(135deg, #1f173b 0%, #7d5be1 100%);
+  color: #fffdf9;
+  box-shadow: 0 16px 28px rgba(67, 48, 122, 0.2);
+}
+
+.byeoldam-button-secondary,
+.byeoldam-button-ghost {
+  border: 1px solid rgba(91, 72, 132, 0.18);
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--ink);
+}
+
+.byeoldam-button-ghost {
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .byeoldam-field {
   width: 100%;
-  border-radius: 24px;
-  border: 1px solid rgba(49, 65, 94, 0.12);
-  background: rgba(255, 255, 255, 0.86);
+  border-radius: 18px;
+  border: 1px solid rgba(91, 72, 132, 0.16);
+  background: rgba(255, 255, 255, 0.9);
   padding: 1rem 1.1rem;
   font-size: 1rem;
   line-height: 1.55;
-  color: var(--navy);
+  color: var(--ink);
   outline: none;
   transition:
     border-color 140ms ease,
-    box-shadow 140ms ease,
-    transform 140ms ease;
+    box-shadow 140ms ease;
 }
 
 .byeoldam-field:focus {
-  border-color: rgba(45, 120, 100, 0.5);
-  box-shadow: 0 0 0 4px rgba(45, 120, 100, 0.12);
+  border-color: rgba(124, 92, 205, 0.58);
+  box-shadow: 0 0 0 4px rgba(124, 92, 205, 0.14);
 }
 
 .byeoldam-label {
   display: block;
   margin-bottom: 0.65rem;
   font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--navy-soft);
+  font-weight: 900;
+  color: var(--ink-soft);
 }
 
 .byeoldam-card-slot {
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
-  border: 1px solid rgba(215, 178, 109, 0.24);
+  border-radius: 18px;
+  border: 1px solid rgba(124, 92, 205, 0.22);
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.76), transparent 48%),
-    linear-gradient(180deg, rgba(255, 248, 236, 0.98) 0%, rgba(247, 238, 224, 0.98) 100%);
-  box-shadow: 0 18px 34px rgba(93, 77, 42, 0.08);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(234, 226, 255, 0.86)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(238, 231, 255, 0.98) 100%);
+  box-shadow: 0 18px 34px rgba(63, 43, 112, 0.12);
 }
 
 .byeoldam-card-slot::after {
   content: "";
   position: absolute;
-  inset: 16px;
-  border-radius: 18px;
-  border: 1px dashed rgba(184, 138, 59, 0.32);
+  inset: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(124, 92, 205, 0.16);
   pointer-events: none;
 }
 
 .byeoldam-reading-section {
-  border-radius: 28px;
-  border: 1px solid rgba(49, 65, 94, 0.1);
-  background: rgba(255, 255, 255, 0.78);
+  border-radius: 18px;
+  border: 1px solid rgba(91, 72, 132, 0.13);
+  background: rgba(255, 255, 255, 0.72);
   padding: 1.25rem;
 }
 
-.byeoldam-print-sheet {
-  width: min(100%, 920px);
+.byeoldam-flow-details summary {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.byeoldam-flow-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.byeoldam-flow-details summary strong {
+  color: var(--ink);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+.studio-panel {
+  min-height: calc(100vh - 48px);
+}
+
+.studio-header,
+.studio-submit-row,
+.result-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.studio-concern {
+  min-height: 132px;
+}
+
+.studio-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.studio-card {
+  min-height: 540px;
+}
+
+.studio-ready-badge {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: rgba(34, 143, 138, 0.12);
+  color: var(--teal);
+  padding: 0.38rem 0.62rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.card-photo-frame {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid rgba(91, 72, 132, 0.16);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(39, 28, 74, 0.88), rgba(118, 88, 193, 0.7));
+  background-size:
+    28px 28px,
+    28px 28px,
+    auto;
+}
+
+.studio-photo-frame {
+  aspect-ratio: 4 / 5;
+  min-height: 250px;
+  cursor: pointer;
+}
+
+.result-photo-frame {
+  aspect-ratio: 4 / 5;
+  min-height: 260px;
+}
+
+.studio-photo-placeholder {
+  display: grid;
+  width: min(72%, 180px);
+  justify-items: center;
+  gap: 0.9rem;
+  color: white;
+  font-weight: 900;
+  text-align: center;
+}
+
+.tarot-reference-card {
+  position: relative;
+  width: 100%;
+  min-width: 110px;
+  aspect-ratio: 3 / 4.25;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: #fbf8ff;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 6px rgba(55, 38, 100, 0.08);
+}
+
+.tarot-reference-card-compact {
+  min-width: 96px;
+  max-width: 170px;
+}
+
+.tarot-reference-card-inner {
+  position: absolute;
+  inset: 11px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  border: 1px solid rgba(60, 42, 110, 0.35);
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 160ms ease;
+}
+
+.tarot-reference-card-inner.is-reversed {
+  transform: rotate(180deg);
+}
+
+.tarot-reference-moon {
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  color: var(--violet);
+  font-size: 1.3rem;
+}
+
+.tarot-reference-stars {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+.tarot-reference-window {
+  display: grid;
+  width: 54%;
+  aspect-ratio: 1;
+  margin-bottom: 0.7rem;
+  place-items: center;
+  border: 1px solid rgba(124, 92, 205, 0.32);
+  background:
+    linear-gradient(135deg, rgba(124, 92, 205, 0.12), rgba(255, 178, 206, 0.18)),
+    #ffffff;
+}
+
+.tarot-reference-window span {
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 2px solid var(--violet);
+  box-shadow:
+    18px 4px 0 -10px var(--rose),
+    -13px 18px 0 -9px var(--teal);
+}
+
+.tarot-reference-title {
+  width: min(88%, 190px);
+  color: var(--ink);
+  font-size: clamp(0.72rem, 3vw, 0.95rem);
+  font-weight: 900;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.tarot-reference-subtitle {
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.tarot-reference-orientation {
+  display: none;
+}
+
+.reading-result {
+  max-width: 980px;
   margin-inline: auto;
 }
 
+.result-intro,
+.result-closing {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(236, 225, 255, 0.84));
+}
+
+.result-card {
+  min-height: 100%;
+}
+
+.print-only {
+  display: none;
+}
+
+.byeoldam-receipt {
+  position: relative;
+  overflow: hidden;
+  width: 60mm;
+  min-height: 120mm;
+  margin-inline: auto;
+  border: 0.35mm solid #1f1f1f;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    #fff;
+  background-size: 100% 9px;
+  color: #161616;
+  padding: 4mm;
+  text-align: center;
+  font-family: "Times New Roman", "Noto Serif KR", serif;
+}
+
+.receipt-corners::before,
+.receipt-corners::after {
+  content: "";
+  position: absolute;
+  top: 2.5mm;
+  width: 5mm;
+  height: 5mm;
+  border-top: 0.45mm solid #161616;
+}
+
+.receipt-corners::before {
+  left: 2.5mm;
+  border-left: 0.45mm solid #161616;
+}
+
+.receipt-corners::after {
+  right: 2.5mm;
+  border-right: 0.45mm solid #161616;
+}
+
+.receipt-moons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.3mm solid #222;
+  padding: 0 7mm 3mm;
+  font-size: 6mm;
+  line-height: 1;
+}
+
+.byeoldam-receipt h2 {
+  margin-top: 5mm;
+  font-family: var(--font-display);
+  font-size: 9mm;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.receipt-ribbon {
+  margin: 5mm auto 0;
+  border: 0.3mm solid #222;
+  padding: 2mm 2.5mm;
+  font-size: 3.15mm;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.receipt-qr {
+  width: 42mm;
+  margin: 5mm auto 0;
+  border: 0.55mm solid #222;
+  padding: 2mm;
+  background: #fff;
+}
+
+.receipt-summary-label {
+  margin-top: 4mm;
+  font-size: 3mm;
+  font-weight: 800;
+}
+
+.receipt-summary {
+  margin-top: 2mm;
+  font-size: 3.7mm;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.receipt-instagram {
+  margin-top: 4mm;
+  border-top: 0.3mm solid #222;
+  padding-top: 3mm;
+  font-family: var(--font-sans);
+  font-size: 3.2mm;
+  font-weight: 900;
+}
+
 @media print {
+  @page {
+    size: 60mm 120mm;
+    margin: 0;
+  }
+
   html,
   body {
-    background: white;
+    width: 60mm;
+    min-height: 120mm;
+    background: white !important;
   }
 
-  body::before {
-    display: none;
-  }
-
-  .no-print {
+  body::before,
+  .no-print,
+  .screen-result {
     display: none !important;
   }
 
-  .byeoldam-panel,
-  .byeoldam-reading-section,
-  .byeoldam-card-slot {
+  .print-only {
+    display: block !important;
+  }
+
+  .byeoldam-page,
+  .byeoldam-shell {
+    display: block !important;
+    width: 60mm !important;
+    min-height: 120mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .byeoldam-receipt {
+    width: 60mm !important;
+    min-height: 120mm !important;
+    margin: 0 !important;
     box-shadow: none !important;
-    backdrop-filter: none !important;
-    background: white !important;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .byeoldam-shell {
     width: min(100% - 18px, 1180px);
+  }
+
+  .studio-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .studio-photo-frame {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 760px) {
+  .studio-header,
+  .studio-submit-row,
+  .result-actions,
+  .byeoldam-flow-details summary {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .studio-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-card {
+    min-height: auto;
   }
 }
