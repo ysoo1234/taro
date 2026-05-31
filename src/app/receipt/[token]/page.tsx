@@ -52,9 +52,6 @@ export default async function ReceiptPage({ params }: ReceiptPageProps) {
               <span>☽</span>
             </div>
             <h2>별담카페</h2>
-            <p className="receipt-ribbon">
-              지금의 선택이 좋은 방향으로 이어지고 있습니다.
-            </p>
             <div className="receipt-qr">
               <Image
                 src={qrDataUrl}
@@ -66,7 +63,7 @@ export default async function ReceiptPage({ params }: ReceiptPageProps) {
             </div>
             <div className="receipt-summary-label">한 줄 요약</div>
             <p className="receipt-summary">{reading.result.shareSummary}</p>
-            <p className="receipt-instagram">@the.beyeoldam</p>
+            <p className="receipt-instagram">@the.byeoldam</p>
           </section>
         </section>
       </div>

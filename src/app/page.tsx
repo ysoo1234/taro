@@ -73,14 +73,6 @@ export default function Home() {
                 <article
                   key={card.title}
                   className="byeoldam-card-slot p-5 sm:p-6"
-                  style={{
-                    transform:
-                      index === 1
-                        ? "translateX(18px)"
-                        : index === 2
-                          ? "translateX(4px)"
-                          : "none",
-                  }}
                 >
                   <div className="relative z-10">
                     <p className="text-sm font-black uppercase text-[var(--lilac-strong)]">
