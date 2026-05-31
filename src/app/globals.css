@@ -289,6 +289,12 @@ a {
   gap: 1rem;
 }
 
+.print-action-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .studio-concern {
   min-height: 132px;
 }
@@ -687,6 +693,98 @@ a {
     padding-top: 9mm;
     border-top-width: 0.65mm;
     font-size: 8.2mm;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    @page {
+      margin: 0;
+      size: 57mm 182mm;
+    }
+
+    html,
+    body {
+      width: 57mm;
+      min-height: 182mm;
+    }
+
+    .print-only {
+      position: fixed !important;
+      inset: 0 !important;
+      display: flex !important;
+      width: 57mm !important;
+      height: 182mm !important;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 6mm;
+    }
+
+    .byeoldam-page,
+    .byeoldam-shell {
+      width: 57mm !important;
+      min-height: 182mm !important;
+    }
+
+    .byeoldam-receipt {
+      width: 52mm !important;
+      height: 138mm !important;
+      margin: 0 auto !important;
+      padding: 4mm 3mm 3mm !important;
+    }
+
+    .receipt-corners::before,
+    .receipt-corners::after {
+      top: 2.4mm;
+      width: 4.4mm;
+      height: 4.4mm;
+      border-top-width: 0.35mm;
+    }
+
+    .receipt-corners::before {
+      left: 2.4mm;
+      border-left-width: 0.35mm;
+    }
+
+    .receipt-corners::after {
+      right: 2.4mm;
+      border-right-width: 0.35mm;
+    }
+
+    .receipt-moons {
+      padding: 0 7mm 2.5mm;
+      border-bottom-width: 0.28mm;
+      font-size: 5.5mm;
+    }
+
+    .byeoldam-receipt h2 {
+      margin-top: 3.5mm;
+      font-size: 8.5mm;
+    }
+
+    .receipt-qr {
+      width: 40mm;
+      margin-top: 6mm;
+      border-width: 0.45mm;
+      padding: 1.3mm;
+    }
+
+    .receipt-summary-label {
+      margin-top: 5mm;
+      font-size: 2.8mm;
+    }
+
+    .receipt-summary {
+      max-height: 13mm;
+      margin-top: 1.4mm;
+      font-size: 3.5mm;
+      line-height: 1.35;
+    }
+
+    .receipt-instagram {
+      margin-top: 5mm;
+      padding-top: 3mm;
+      border-top-width: 0.28mm;
+      font-size: 3.1mm;
+    }
   }
 }
 

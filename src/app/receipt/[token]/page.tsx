@@ -30,7 +30,10 @@ export default async function ReceiptPage({ params }: ReceiptPageProps) {
     <main className="byeoldam-page px-3 py-4 sm:px-4 sm:py-6">
       <div className="byeoldam-shell grid gap-4">
         <div className="no-print result-actions">
-          <PrintButton />
+          <PrintButton
+            qrDataUrl={qrDataUrl}
+            summary={reading.result.shareSummary}
+          />
           <Link
             href="/studio"
             className="byeoldam-button byeoldam-button-secondary"
