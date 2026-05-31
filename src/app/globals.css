@@ -466,7 +466,7 @@ a {
   position: relative;
   overflow: hidden;
   width: 57mm;
-  height: 90mm;
+  height: 150mm;
   min-height: 0;
   margin-inline: auto;
   border: 0.25mm solid #1f1f1f;
@@ -475,7 +475,7 @@ a {
     #fff;
   background-size: 100% 9px;
   color: #161616;
-  padding: 3mm 4mm 2.5mm;
+  padding: 5mm 4mm 4mm;
   text-align: center;
   font-family: "Times New Roman", "Noto Serif KR", serif;
   break-inside: avoid;
@@ -487,19 +487,19 @@ a {
 .receipt-corners::after {
   content: "";
   position: absolute;
-  top: 2mm;
-  width: 4.5mm;
-  height: 4.5mm;
+  top: 3mm;
+  width: 5mm;
+  height: 5mm;
   border-top: 0.35mm solid #161616;
 }
 
 .receipt-corners::before {
-  left: 2mm;
+  left: 3mm;
   border-left: 0.35mm solid #161616;
 }
 
 .receipt-corners::after {
-  right: 2mm;
+  right: 3mm;
   border-right: 0.35mm solid #161616;
 }
 
@@ -508,15 +508,15 @@ a {
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.28mm solid #222;
-  padding: 0 7mm 2mm;
-  font-size: 5mm;
+  padding: 0 7mm 3mm;
+  font-size: 6mm;
   line-height: 1;
 }
 
 .byeoldam-receipt h2 {
-  margin-top: 2.6mm;
+  margin-top: 4mm;
   font-family: var(--font-display);
-  font-size: 8mm;
+  font-size: 9mm;
   line-height: 1;
   letter-spacing: 0;
 }
@@ -526,8 +526,8 @@ a {
 }
 
 .receipt-qr {
-  width: 36mm;
-  margin: 3.5mm auto 0;
+  width: 43mm;
+  margin: 7mm auto 0;
   border: 0.45mm solid #222;
   padding: 1.5mm;
   background: #fff;
@@ -540,43 +540,43 @@ a {
 }
 
 .receipt-summary-label {
-  margin-top: 3mm;
-  font-size: 2.7mm;
+  margin-top: 6mm;
+  font-size: 3mm;
   font-weight: 800;
 }
 
 .receipt-summary {
   display: -webkit-box;
-  max-height: 11mm;
-  margin-top: 1mm;
+  max-height: 14mm;
+  margin-top: 1.8mm;
   overflow: hidden;
-  font-size: 3.3mm;
+  font-size: 3.7mm;
   font-weight: 800;
-  line-height: 1.35;
+  line-height: 1.45;
   overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
 .receipt-instagram {
-  margin-top: 3mm;
+  margin-top: 6mm;
   border-top: 0.28mm solid #222;
-  padding-top: 2.2mm;
+  padding-top: 3.5mm;
   font-family: var(--font-sans);
-  font-size: 3.1mm;
+  font-size: 3.3mm;
   font-weight: 900;
 }
 
 @media print {
   @page {
     margin: 0;
-    size: 57mm 90mm;
+    size: A4 portrait;
   }
 
   html,
   body {
-    width: 57mm;
-    min-height: 0;
+    width: 210mm;
+    min-height: 297mm;
     margin: 0 !important;
     background: white !important;
   }
@@ -589,27 +589,29 @@ a {
 
   .print-only {
     display: flex !important;
-    width: 57mm !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    align-items: center;
     justify-content: center;
   }
 
   .byeoldam-page,
   .byeoldam-shell {
     display: block !important;
-    width: 57mm !important;
-    min-height: 0 !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
   .byeoldam-receipt {
     display: block !important;
-    width: 57mm !important;
-    height: 90mm !important;
+    width: 96mm !important;
+    height: 228mm !important;
     min-height: 0 !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
     overflow: hidden !important;
-    padding: 3mm 4mm 2.5mm !important;
+    padding: 8mm 7mm 7mm !important;
     break-inside: avoid;
     page-break-after: avoid;
     page-break-inside: avoid;
@@ -618,31 +620,31 @@ a {
 
   .receipt-corners::before,
   .receipt-corners::after {
-    top: 2mm;
-    width: 4.5mm;
-    height: 4.5mm;
-    border-top-width: 0.35mm;
+    top: 5mm;
+    width: 8mm;
+    height: 8mm;
+    border-top-width: 0.55mm;
   }
 
   .receipt-corners::before {
-    left: 2mm;
-    border-left-width: 0.35mm;
+    left: 5mm;
+    border-left-width: 0.55mm;
   }
 
   .receipt-corners::after {
-    right: 2mm;
-    border-right-width: 0.35mm;
+    right: 5mm;
+    border-right-width: 0.55mm;
   }
 
   .receipt-moons {
-    padding: 0 7mm 2mm;
-    border-bottom-width: 0.28mm;
-    font-size: 5mm;
+    padding: 0 14mm 6mm;
+    border-bottom-width: 0.45mm;
+    font-size: 9mm;
   }
 
   .byeoldam-receipt h2 {
-    margin-top: 2.6mm;
-    font-size: 8mm;
+    margin-top: 7mm;
+    font-size: 14mm;
   }
 
   .receipt-ribbon {
@@ -650,10 +652,10 @@ a {
   }
 
   .receipt-qr {
-    width: 36mm;
-    margin-top: 3.5mm;
-    border-width: 0.45mm;
-    padding: 1.5mm;
+    width: 72mm;
+    margin-top: 12mm;
+    border-width: 0.7mm;
+    padding: 2.5mm;
   }
 
   .receipt-qr img {
@@ -663,27 +665,27 @@ a {
   }
 
   .receipt-summary-label {
-    margin-top: 3mm;
-    font-size: 2.7mm;
+    margin-top: 10mm;
+    font-size: 4.8mm;
   }
 
   .receipt-summary {
     display: -webkit-box;
-    max-height: 11mm;
-    margin-top: 1mm;
+    max-height: 26mm;
+    margin-top: 3mm;
     overflow: hidden;
-    font-size: 3.3mm;
-    line-height: 1.35;
+    font-size: 6mm;
+    line-height: 1.45;
     overflow-wrap: anywhere;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
 
   .receipt-instagram {
-    margin-top: 3mm;
-    padding-top: 2.2mm;
-    border-top-width: 0.28mm;
-    font-size: 3.1mm;
+    margin-top: 10mm;
+    padding-top: 6mm;
+    border-top-width: 0.45mm;
+    font-size: 5.4mm;
   }
 }
 

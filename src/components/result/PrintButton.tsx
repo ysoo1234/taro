@@ -23,6 +23,12 @@ export function PrintButton() {
     <button
       type="button"
       onClick={printReceipt}
+      onPointerUp={(event) => {
+        if (event.pointerType === "touch") {
+          event.preventDefault();
+          printReceipt();
+        }
+      }}
       onTouchEnd={(event) => {
         event.preventDefault();
         printReceipt();
