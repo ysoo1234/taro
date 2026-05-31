@@ -16,12 +16,15 @@ export function PrintButton() {
     }, 900);
 
     window.focus();
-    window.print();
+    window.setTimeout(() => {
+      window.print();
+    }, 0);
   }
 
   return (
-    <button
-      type="button"
+    <a
+      href="#print"
+      role="button"
       onClick={printReceipt}
       onPointerUp={(event) => {
         if (event.pointerType === "touch") {
@@ -36,6 +39,6 @@ export function PrintButton() {
       className="byeoldam-button byeoldam-button-primary"
     >
       QR 코드 인쇄
-    </button>
+    </a>
   );
 }
