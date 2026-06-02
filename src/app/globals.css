@@ -573,11 +573,49 @@ a {
   font-weight: 900;
 }
 
-.receipt-card-page {
-  display: grid;
-  min-height: 100vh;
-  place-items: center;
+html:has(.receipt-card-page) {
+  min-height: 0;
   background: white;
+}
+
+body:has(.receipt-card-page) {
+  display: block !important;
+  min-height: 0 !important;
+  background: white;
+}
+
+body:has(.receipt-card-page)::before {
+  display: none;
+}
+
+.receipt-card-page {
+  display: block;
+  width: 57mm;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 6px 0;
+  background: white;
+}
+
+@media screen and (max-width: 760px) {
+  .receipt-card-page {
+    width: calc(57mm * 1.62);
+    padding-top: 8px;
+  }
+
+  .receipt-card-page .byeoldam-receipt-compact {
+    zoom: 1.62;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .receipt-card-page {
+    width: calc(57mm * 1.42);
+  }
+
+  .receipt-card-page .byeoldam-receipt-compact {
+    zoom: 1.42;
+  }
 }
 
 .byeoldam-receipt-compact {
