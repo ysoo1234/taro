@@ -573,6 +573,79 @@ a {
   font-weight: 900;
 }
 
+.receipt-card-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  background: white;
+}
+
+.byeoldam-receipt-compact {
+  box-sizing: border-box;
+  width: 57mm;
+  height: 97mm;
+  margin: 0;
+  padding: 2.6mm 3mm 2mm;
+  border-width: 0.28mm;
+  box-shadow: none;
+}
+
+.byeoldam-receipt-compact .receipt-corners::before,
+.byeoldam-receipt-compact .receipt-corners::after {
+  top: 2.4mm;
+  width: 4.4mm;
+  height: 4.4mm;
+  border-top-width: 0.35mm;
+}
+
+.byeoldam-receipt-compact .receipt-corners::before {
+  left: 2.4mm;
+  border-left-width: 0.35mm;
+}
+
+.byeoldam-receipt-compact .receipt-corners::after {
+  right: 2.4mm;
+  border-right-width: 0.35mm;
+}
+
+.byeoldam-receipt-compact .receipt-moons {
+  padding: 0 7mm 1.8mm;
+  border-bottom-width: 0.28mm;
+  font-size: 4.6mm;
+}
+
+.byeoldam-receipt-compact h2 {
+  margin-top: 2.1mm;
+  font-size: 6.9mm;
+}
+
+.byeoldam-receipt-compact .receipt-qr {
+  width: 38mm;
+  margin-top: 3.8mm;
+  border-width: 0.45mm;
+  padding: 1.1mm;
+}
+
+.byeoldam-receipt-compact .receipt-summary-label {
+  margin-top: 2.4mm;
+  font-size: 2.5mm;
+}
+
+.byeoldam-receipt-compact .receipt-summary {
+  max-height: 9mm;
+  margin-top: 0.8mm;
+  font-size: 3mm;
+  line-height: 1.28;
+  -webkit-line-clamp: 2;
+}
+
+.byeoldam-receipt-compact .receipt-instagram {
+  margin-top: 3mm;
+  padding-top: 1.3mm;
+  border-top-width: 0.28mm;
+  font-size: 2.55mm;
+}
+
 @media print {
   @page {
     margin: 0;
@@ -785,6 +858,41 @@ a {
       border-top-width: 0.28mm;
       font-size: 3.1mm;
     }
+  }
+}
+
+@media print {
+  @page receipt-card {
+    margin: 0;
+    size: 57mm 97mm;
+  }
+
+  .receipt-card-page {
+    display: block !important;
+    width: 57mm !important;
+    min-height: 97mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    page: receipt-card;
+  }
+
+  .receipt-card-page .byeoldam-receipt-compact {
+    box-sizing: border-box !important;
+    display: block !important;
+    width: 57mm !important;
+    height: 97mm !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 2.6mm 3mm 2mm !important;
+    box-shadow: none !important;
+  }
+
+  .receipt-card-page .byeoldam-receipt-compact .receipt-qr {
+    width: 38mm !important;
+    margin-top: 3.8mm !important;
+    border-width: 0.45mm !important;
+    padding: 1.1mm !important;
   }
 }
 
