@@ -34,7 +34,7 @@ export function PrintButton({ printPageHref }: PrintButtonProps) {
         onClick={openReceiptPage}
         className="byeoldam-button byeoldam-button-primary"
       >
-        5.7x9.7 페이지 열기
+        QR코드 인쇄
       </a>
     </div>
   );

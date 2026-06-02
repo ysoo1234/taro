@@ -20,6 +20,7 @@ export function ReadingResult({ reading, compact = false }: ReadingResultProps) 
             {new Intl.DateTimeFormat("ko-KR", {
               dateStyle: "medium",
               timeStyle: compact ? "short" : "medium",
+              timeZone: "Asia/Seoul",
             }).format(new Date(reading.createdAt))}
           </span>
         </div>
