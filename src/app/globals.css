@@ -620,6 +620,8 @@ body:has(.receipt-card-page)::before {
 
 .byeoldam-receipt-compact {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   width: 57mm;
   height: 97mm;
   margin: 0;
@@ -678,7 +680,8 @@ body:has(.receipt-card-page)::before {
 }
 
 .byeoldam-receipt-compact .receipt-instagram {
-  margin-top: 2.4mm;
+  width: 100%;
+  margin-top: auto;
   padding-top: 1.1mm;
   border-top-width: 0.28mm;
   font-size: 3mm;
@@ -691,8 +694,8 @@ body:has(.receipt-card-page)::before {
   }
 
   .receipt-card-page .byeoldam-receipt-compact .receipt-qr {
-    width: 36mm;
-    margin-top: 2.5mm;
+    width: 39mm;
+    margin-top: 2.3mm;
   }
 
   .receipt-card-page .byeoldam-receipt-compact .receipt-summary-label {
@@ -709,7 +712,7 @@ body:has(.receipt-card-page)::before {
   }
 
   .receipt-card-page .byeoldam-receipt-compact .receipt-instagram {
-    margin-top: 1.4mm;
+    margin-top: auto;
     padding-top: 0.9mm;
     font-size: 3.7mm;
   }
@@ -948,7 +951,8 @@ body:has(.receipt-card-page)::before {
 
   .receipt-card-page .byeoldam-receipt-compact {
     box-sizing: border-box !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     width: 57mm !important;
     height: 97mm !important;
     min-height: 0 !important;
